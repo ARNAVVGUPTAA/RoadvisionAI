@@ -3,7 +3,7 @@ services:
     build: ./backend
     container_name: roadvision-backend
     ports:
-      - "8000:8000"
+      - "8085:8085"
     restart: always
 
   frontend:
