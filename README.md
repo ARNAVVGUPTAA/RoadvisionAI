@@ -4,12 +4,21 @@
 
 This repository contains the solution for the RoadVision AI White Labelling Assignment. The application is a full-stack platform designed to visualize real-time simulated video analytics and GIS data. It features a Python backend using FastAPI and a React frontend dashboard.
 
+## Key Features
+
+*   **Real-time Dashboard**: Visualize traffic data and system status.
+*   **Analytics Charts**: Time-series data for vehicle and pedestrian counts.
+*   **GIS Mapping**: Interactive map displaying traffic incidents and severity.
+*   **Incident Analysis**: Severity distribution charts (High/Medium/Low).
+*   **Activity Feed**: Live log of system events and alerts.
+*   **Stats Overview**: Quick summary cards for key metrics (Traffic Flow, Active Incidents, etc.).
+
 ## Architecture
 
 The application follows a microservices architecture, containerized using Docker:
 
-*   **Backend**: A FastAPI application providing RESTful endpoints.
-*   **Frontend**: A React application (built with Vite) served via Nginx.
+*   **Backend**: A FastAPI application providing RESTful endpoints (Port 8085).
+*   **Frontend**: A React application (built with Vite) served via Nginx (Port 80).
 *   **Reverse Proxy**: Nginx handles internal routing, serving static assets and proxying API requests to the backend.
 *   **Deployment**: Designed for automated deployment via Docker Compose and a custom auto-update script.
 
@@ -25,9 +34,7 @@ The application follows a microservices architecture, containerized using Docker
 
 *   `backend/`: Contains the FastAPI application source code and requirements.
 *   `frontend/`: Contains the React application source code and Nginx configuration.
-*   `auto_deploy.sh`: Script for automated polling of git changes and container rebuilding.
 *   `docker-compose.yml`: Service orchestration configuration.
-*   `DEPLOYMENT.md`: Detailed documentation for server setup and cloud integration.
 
 ## Getting Started
 
@@ -54,7 +61,7 @@ The application follows a microservices architecture, containerized using Docker
 
 ## API Endpoints
 
-The backend exposes the following endpoints (available via `http://localhost/api`):
+The backend exposes the following endpoints (internally on port 8085, proxied via `http://localhost/api`):
 
 *   `GET /api/analytics`: Returns simulated time-series data for vehicle and pedestrian counts.
 *   `GET /api/gis`: Returns GeoJSON feature collections for simulated traffic incidents.
